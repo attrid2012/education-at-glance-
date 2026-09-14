@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(
+            circle at top,
+            #4b168f,
+            #17052f 45%,
+            #080313 100%
+        );
+
+    color: white;
+    min-height: 100vh;
+}
+
+.navbar {
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(8, 3, 19, 0.75);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.brand img {
+    width: 52px;
+    height: 52px;
+
+    object-fit: contain;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #c879ff;
+}
+
+.nav-button {
+    padding: 11px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #9b3cff,
+        #6520c9
+    );
+
+    border-radius: 9px;
+}
+
+.hero {
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.small-title {
+    color: #c879ff;
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 80px);
+    margin-bottom: 25px;
+}
+
+.hero p {
+    color: #d6c9e5;
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
+    text-decoration: none;
+    padding: 15px 27px;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+.primary-button {
+    background: #963cff;
+    color: white;
+}
+
+.secondary-button {
+    border: 1px solid #a64cff;
+    color: white;
+}
+
+.courses-preview {
+    padding: 80px 7%;
+}
+
+.courses-preview h2 {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 45px;
+}
+
+.course-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 25px;
+}
+
+.course-card {
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid
+        rgba(200,120,255,0.25);
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    transition: 0.25s;
+}
+
+.course-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #b85cff;
+}
+
+.course-card h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.course-card p {
+    color: #cfc2dd;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.course-card strong {
+    display: block;
+    font-size: 23px;
+    margin-bottom: 25px;
+}
+
+.course-card a {
+    display: inline-block;
+
+    text-decoration: none;
+    color: white;
+
+    background: #7c2de2;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+
+    padding: 35px;
+
+    color: #aaa;
+}
+
+@media(max-width: 700px) {
+
+    .navbar {
+        height: auto;
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
