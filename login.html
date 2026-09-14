@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Register - Education at Glance</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <div class="card">
+
+        <h1>Create Account</h1>
+
+        <br>
+
+        <input
+            id="name"
+            type="text"
+            placeholder="Full Name"
+        >
+
+        <input
+            id="phone"
+            type="tel"
+            placeholder="Phone Number"
+        >
+
+        <input
+            id="email"
+            type="email"
+            placeholder="Email"
+        >
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Password"
+        >
+
+        <br>
+
+        <button
+            class="btn primary"
+            onclick="registerUser()">
+
+            Create Account
+
+        </button>
+
+        <br><br>
+
+        <a href="login.html">
+            Already have an account? Login
+        </a>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/config.js"></script>
+
+<script src="js/auth.js"></script>
+
+</body>
+
+</html>
