@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Profile - Education at Glance</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <div class="card">
+
+        <h1>My Profile</h1>
+
+        <br>
+
+        <p>
+            <b>Name:</b>
+            <span id="name"></span>
+        </p>
+
+        <br>
+
+        <p>
+            <b>Email:</b>
+            <span id="email"></span>
+        </p>
+
+        <br>
+
+        <p>
+            <b>Phone:</b>
+            <span id="phone"></span>
+        </p>
+
+        <br>
+
+        <a
+            href="dashboard.html"
+            class="btn primary">
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/config.js"></script>
+
+<script>
+
+const client =
+    supabase.createClient(
+        APP_CONFIG.SUPABASE_URL,
+        APP_CONFIG.SUPABASE_ANON_KEY
+    );
+
+
+async function loadProfile() {
+
+    const {
+        data: {
+            user
+        }
+    } =
+        await client.auth.getUser();
+
+
+    if (!user) {
+
+        window.location.href =
+            "login.html";
+
+        return;
+    }
+
+
+    document.getElementById(
+        "email"
+    ).textContent =
+        user.email;
+
+
+    const {
+        data
+    } =
+        await client
+            .from("profiles")
+            .select("*")
+            .eq("id", user.id)
+            .single();
+
+
+    if (data) {
+
+        document.getElementById(
+            "name"
+        ).textContent =
+            data.full_name || "-";
+
+
+        document.getElementById(
+            "phone"
+        ).textContent =
+            data.phone || "-";
+
+    }
+
+}
+
+
+loadProfile();
+
+</script>
+
+</body>
+
+</html>
