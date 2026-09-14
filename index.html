@@ -3,13 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Education at Glance</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -17,20 +15,14 @@
 <header class="navbar">
 
     <div class="brand">
-        <img src="assets/logo.png"
-             alt="Education at Glance">
-
+        <img src="./assets/logo.png" alt="Education at Glance">
         <span>Education at Glance</span>
     </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="courses.html">Courses</a>
-        <a href="login.html">Login</a>
-        <a href="register.html" class="nav-button">
-            Register
-        </a>
-    </nav>
+    <div class="nav-buttons">
+        <a href="login.html" class="btn secondary">Login</a>
+        <a href="register.html" class="btn primary">Register</a>
+    </div>
 
 </header>
 
@@ -39,30 +31,30 @@
 
     <div class="hero-content">
 
-        <p class="small-title">
-            EDUCATION AT GLANCE
-        </p>
+        <img
+            src="./assets/logo.png"
+            class="hero-logo"
+            alt="Education at Glance"
+        >
 
-        <h1>
-            Learn. Grow. Succeed.
-        </h1>
+        <h1>Education at Glance</h1>
+
+        <h2>Learn Better. Understand Faster.</h2>
 
         <p>
-            Complete academic courses for Classes 8, 9 and 10.
-            Learn through structured lessons, chapters and
-            high-quality educational videos.
+            Complete learning platform for Classes 8, 9 and 10.
+            Watch lectures, study notes and attend live classes
+            from one place.
         </p>
 
         <div class="hero-buttons">
 
-            <a href="courses.html"
-               class="primary-button">
+            <a href="dashboard.html" class="btn primary">
                 Explore Courses
             </a>
 
-            <a href="register.html"
-               class="secondary-button">
-                Create Account
+            <a href="register.html" class="btn secondary">
+                Get Started
             </a>
 
         </div>
@@ -72,54 +64,66 @@
 </section>
 
 
-<section class="courses-preview">
+<section class="courses-section">
 
     <h2>Choose Your Class</h2>
 
     <div class="course-grid">
 
         <div class="course-card">
+
             <h3>Class 8</h3>
 
-            <p>
-                Complete Class 8 learning program.
-            </p>
+            <p>Complete Class 8 Course</p>
 
-            <strong>₹3,000 / year</strong>
+            <strong>₹2,999</strong>
 
-            <a href="courses.html?class=8">
+            <a
+                href="course.html?course=class8"
+                class="btn primary">
+
                 View Course
+
             </a>
+
         </div>
 
 
         <div class="course-card">
+
             <h3>Class 9</h3>
 
-            <p>
-                Complete Class 9 learning program.
-            </p>
+            <p>Complete Class 9 Course</p>
 
-            <strong>₹3,500 / year</strong>
+            <strong>₹3,499</strong>
 
-            <a href="courses.html?class=9">
+            <a
+                href="course.html?course=class9"
+                class="btn primary">
+
                 View Course
+
             </a>
+
         </div>
 
 
         <div class="course-card">
+
             <h3>Class 10</h3>
 
-            <p>
-                Complete Class 10 learning program.
-            </p>
+            <p>Complete Class 10 Course</p>
 
-            <strong>₹4,000 / year</strong>
+            <strong>₹3,999</strong>
 
-            <a href="courses.html?class=10">
+            <a
+                href="course.html?course=class10"
+                class="btn primary">
+
                 View Course
+
             </a>
+
         </div>
 
     </div>
@@ -128,7 +132,9 @@
 
 
 <footer>
-    <p>© 2026 Education at Glance</p>
+
+    © 2026 Education at Glance
+
 </footer>
 
 </body>
