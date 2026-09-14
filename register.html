@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Register - Education at Glance</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="config.js"></script>
+<script src="auth.js"></script>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="brand">
+
+<img src="assets/logo.png">
+
+<span>Education at Glance</span>
+
+</div>
+
+<a href="index.html">Home</a>
+
+</header>
+
+
+<main class="auth-container">
+
+<div class="auth-box">
+
+<h1>Create Account</h1>
+
+<input
+id="name"
+type="text"
+placeholder="Full name"
+>
+
+<input
+id="email"
+type="email"
+placeholder="Email address"
+>
+
+<input
+id="password"
+type="password"
+placeholder="Password"
+>
+
+<button onclick="registerUser()">
+Create Account
+</button>
+
+<p id="message"></p>
+
+<p>
+Already have an account?
+<a href="login.html">Login</a>
+</p>
+
+</div>
+
+</main>
+
+</body>
+</html>
