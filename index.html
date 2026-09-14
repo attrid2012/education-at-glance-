@@ -1,279 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education at Glance | Portal Gate</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Razorpay Infrastructure SDK -->
-    <script src="https://razorpay.com"></script>
-    <!-- Supabase Core Driver Logic -->
-    <script src="https://jsdelivr.net"></script>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Education at Glance</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <div class="brand">Education at <span>Glance</span></div>
-        <div class="auth-cluster" id="authCluster">
-            <button onclick="toggleModal('loginModal', true)">Login</button>
-            <button onclick="toggleModal('registerModal', true)">Register</button>
-        </div>
-    </header>
+<header class="navbar">
 
-    <main class="main-layout">
-        <h1 class="section-title">Select Your Premium Course Track</h1>
-        <div class="grid-container">
-            <!-- Class 8 -->
-            <div class="card">
-                <h2>Class 8 Course Plan</h2>
-                <div class="price">INR 3,000</div>
-                <button class="btn-primary" onclick="processCoursePurchase('class_8', 3000)">Unlock Plan</button>
-            </div>
-            <!-- Class 9 -->
-            <div class="card">
-                <h2>Class 9 Course Plan</h2>
-                <div class="price">INR 3,500</div>
-                <button class="btn-primary" onclick="processCoursePurchase('class_9', 3500)">Unlock Plan</button>
-            </div>
-            <!-- Class 10 -->
-            <div class="card">
-                <h2>Class 10 Course Plan</h2>
-                <div class="price">INR 4,000</div>
-                <button class="btn-primary" onclick="processCoursePurchase('class_10', 4000)">Unlock Plan</button>
-            </div>
-        </div>
-    </main>
+    <div class="brand">
+        <img src="assets/logo.png"
+             alt="Education at Glance">
 
-    <!-- Registration Window Overlay -->
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="toggleModal('registerModal', false)">&times;</span>
-            <h3>Create Account</h3>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="regEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="regPassword" required>
-                </div>
-                <button type="submit" class="btn-primary" style="width:100%;">Register</button>
-            </form>
-        </div>
+        <span>Education at Glance</span>
     </div>
 
-    <!-- Login Window Overlay -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="toggleModal('loginModal', false)">&times;</span>
-            <h3>Account Access</h3>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn-primary" style="width:100%;">Login</button>
-            </form>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="nav-button">
+            Register
+        </a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="small-title">
+            EDUCATION AT GLANCE
+        </p>
+
+        <h1>
+            Learn. Grow. Succeed.
+        </h1>
+
+        <p>
+            Complete academic courses for Classes 8, 9 and 10.
+            Learn through structured lessons, chapters and
+            high-quality educational videos.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="courses.html"
+               class="primary-button">
+                Explore Courses
+            </a>
+
+            <a href="register.html"
+               class="secondary-button">
+                Create Account
+            </a>
+
         </div>
+
     </div>
 
-    <script>
-        // Place your unique project infrastructure coordinates here
-        const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
-        const SUPABASE_KEY = "YOUR_ANON_PUBLIC_KEY";
-        const RAZORPAY_KEY_ID = "rzp_test_YOUR_KEY_ID";
+</section>
 
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        function toggleModal(id, open) {
-            document.getElementById(id).style.display = open ? 'flex' : 'none';
-        }
+<section class="courses-preview">
 
-        // Account Registration Handling
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('regEmail').value;
-            const password = document.getElementById('regPassword').value;
+    <h2>Choose Your Class</h2>
 
-            const { data, error } = await supabase.auth.signUp({ email, password });
-            if (error) alert(error.message);
-            else {
-                alert("Registration successful! Please log in.");
-                toggleModal('registerModal', false);
-            }
-        });
+    <div class="course-grid">
 
-        // System Login Handling
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
+        <div class="course-card">
+            <h3>Class 8</h3>
 
-            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-            if (error) alert(error.message);
-            else {
-                alert("Logged in successfully!");
-                location.reload();
-            }
-        });
+            <p>
+                Complete Class 8 learning program.
+            </p>
 
-        // Initialize Session Check
-        async function checkSession() {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session) {
-                document.getElementById('authCluster').innerHTML = `
-                    <span style="font-size:14px; color:#bda0dc; margin-right:15px;">${session.user.email}</span>
-                    <button onclick="goToPortal()">Go to Dashboard</button>
-                    <button onclick="supabase.auth.signOut().then(()=>location.reload())">Sign Out</button>
-                `;
-                return session.user;
-            }
-            return null;
-        }
-        let activeUser = null;
-        checkSession().then(user => activeUser = user);
+            <strong>₹3,000 / year</strong>
 
-        function goToPortal() { window.location.href = "dashboard.html"; }
-
-        // Razorpay Payment Gateway Pipeline
-        async function processCoursePurchase(classId, baseAmount) {
-            if (!activeUser) {
-                alert("Please access your account or register a profile before purchasing.");
-                toggleModal('loginModal', true);
-                return;
-            }
-
-            const paymentOptions = {
-                "key": RAZORPAY_KEY_ID,
-                "amount": baseAmount * 100, // Normalized to Indian Paise
-                "currency": "INR",
-                "name": "Education at Glance",
-                "description": `1 Year Subscription Access for ${classId.toUpperCase().replace('_', ' ')}`,
-                "handler": async function (paymentResponse) {
-                    const executionDate = new Date();
-                    const computedExpirationDate = new Date();
-                    computedExpirationDate.setFullYear(executionDate.getFullYear() + 1);
-
-                    // Push access state validation object directly to Supabase storage profile mapping
-                    const { error } = await supabase.from('subscriptions').insert([
-                        { 
-                            user_id: activeUser.id, 
-                            class_tier: classId, 
-                            purchased_at: executionDate.toISOString(), 
-                            expires_at: computedExpirationDate.toISOString(),
-                            razorpay_id: paymentResponse.razorpay_payment_id
-                        }
-                    ]);
-
-                    if (error) {
-                        alert("Database synchronization failure: " + error.message);
-                    } else {
-                        alert("Transaction verified successfully. Plan is active.");
-                        window.location.href = "dashboard.html";
-                    }
-                },
-                "prefill": { "email": activeUser.email },
-                "theme": { "color": "#4a0082" }
-            };
-
-            const clientCheckoutWindow = new Razorpay(paymentOptions);
-            clientCheckoutWindow.open();
-        }
-    </script>
-</body>
-</html>
-Use code with caution.3. Student Curriculum Center (dashboard.html)html<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education at Glance | Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://jsdelivr.net"></script>
-</head>
-<body>
-
-    <header>
-        <div class="brand" onclick="window.location.href='index.html'" style="cursor:pointer;">Education at <span>Glance</span></div>
-        <div class="auth-cluster">
-            <button onclick="window.location.href='index.html'">Back to Store</button>
-        </div>
-    </header>
-
-    <main class="main-layout">
-        <!-- Displayed dynamically depending on authorization check state -->
-        <div id="tierLockoutArea" style="display:none; text-align:center; padding-top:40px;">
-            <h2 style="color:#ff4a4a; margin-bottom:15px;">Access Terminated or Course Expired</h2>
-            <p style="color:var(--text-muted); margin-bottom:25px;">You have no active subscription or your 1-year learning period has lapsed.</p>
-            <button class="btn-primary" onclick="window.location.href='index.html'">View Subscription Plans</button>
+            <a href="courses.html?class=8">
+                View Course
+            </a>
         </div>
 
-        <div id="dashboardWorkspace" style="display:none;">
-            <h1 class="section-title" id="portalWelcomeMessage">Subject Directory</h1>
-            <ul class="subject-list">
-                <li class="subject-item" onclick="routeToSubject('Mathematics')">Mathematics</li>
-                <li class="subject-item" onclick="routeToSubject('Science')">Science</li>
-                <li class="subject-item" onclick="routeToSubject('English')">English</li>
-                <li class="subject-item" onclick="routeToSubject('Social Science')">Social Science</li>
-                <li class="subject-item" onclick="routeToSubject('Hindi')">Hindi</li>
-                <li class="subject-item" onclick="routeToSubject('Sanskrit')">Sanskrit</li>
-                <li class="subject-item" onclick="routeToSubject('Computer Science')">Computer Science</li>
-            </ul>
+
+        <div class="course-card">
+            <h3>Class 9</h3>
+
+            <p>
+                Complete Class 9 learning program.
+            </p>
+
+            <strong>₹3,500 / year</strong>
+
+            <a href="courses.html?class=9">
+                View Course
+            </a>
         </div>
-    </main>
 
-    <script>
-        const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
-        const SUPABASE_KEY = "YOUR_ANON_PUBLIC_KEY";
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        let structuralUserTier = null;
+        <div class="course-card">
+            <h3>Class 10</h3>
 
-        async function authenticateAndProcessPortal() {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (!session) {
-                window.location.href = "index.html";
-                return;
-            }
+            <p>
+                Complete Class 10 learning program.
+            </p>
 
-            // Pull valid records belonging directly to user session identity trace
-            const { data: subscriptions, error } = await supabase
-                .from('subscriptions')
-                .select('*')
-                .eq('user_id', session.user.id)
-                .order('expires_at', { ascending: false });
+            <strong>₹4,000 / year</strong>
 
-            if (error || !subscriptions || subscriptions.length === 0) {
-                document.getElementById('tierLockoutArea').style.display = 'block';
-                return;
-            }
+            <a href="courses.html?class=10">
+                View Course
+            </a>
+        </div>
 
-            const currentActiveSubscription = subscriptions[0];
-            const modernTimestamp = new Date();
-            const expirationTimeCheck = new Date(currentActiveSubscription.expires_at);
+    </div>
 
-            // Firm Evaluation Routine: Verify that server record has not expired past 1 year marker point
-            if (modernTimestamp > expirationTimeCheck) {
-                document.getElementById('tierLockoutArea').style.display = 'block';
-                return;
-            }
+</section>
 
-            // Grant workspace visualization permission map properties
-            structuralUserTier = currentActiveSubscription.class_tier;
-            document.getElementById('portalWelcomeMessage').innerText = `${structuralUserTier.toUpperCase().replace('_', ' ')} — Subject Matrix`;
-            document.getElementById('dashboardWorkspace').style.display = 'block';
-        }
 
-        function routeToSubject(subjectName) {
-            window.location.href = `watch.html?tier=${structuralUserTier}&subject=${encodeURIComponent(subjectName)}`;
-        }
+<footer>
+    <p>© 2026 Education at Glance</p>
+</footer>
 
-        authenticateAndProcessPortal();
-    </script>
 </body>
 </html>
